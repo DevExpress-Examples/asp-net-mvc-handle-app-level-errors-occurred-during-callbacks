@@ -1,0 +1,19 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcGridView_example", "MvcGridView_example\MvcGridView_example.csproj", "{EBC0C36F-F41F-4846-B018-A56EADCCECFB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EBC0C36F-F41F-4846-B018-A56EADCCECFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBC0C36F-F41F-4846-B018-A56EADCCECFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBC0C36F-F41F-4846-B018-A56EADCCECFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBC0C36F-F41F-4846-B018-A56EADCCECFB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

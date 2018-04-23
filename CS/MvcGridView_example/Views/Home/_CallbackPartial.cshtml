@@ -1,0 +1,13 @@
+﻿@Html.DevExpress().CallbackPanel(
+    settings => {
+        settings.Name = "cbpExample";
+        settings.CallbackRouteValues = new { Controller = "Home", Action = "CallbackPanelPartial" };
+
+        @Html.DevExpress().Button(btnSettings => {
+            btnSettings.Name = "btn";
+            btnSettings.Text = "Throw exception on Callback";
+            btnSettings.ClientSideEvents.Click = "function(s, e) { cbpExample.PerformCallback(); }";
+        }).GetHtml();
+
+    }
+).GetHtml()

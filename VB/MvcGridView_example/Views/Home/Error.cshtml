@@ -1,0 +1,17 @@
+﻿@using System.Web.UI.WebControls;
+
+@{
+    ViewBag.Title = "Error Page";
+}
+
+<h2>Error Page</h2>
+
+
+ Error log:
+  @Html.DevExpress().Memo(memoSettings => {
+            memoSettings.Name = "memo";
+            memoSettings.Height = new Unit(500, UnitType.Pixel);
+            memoSettings.Width = new Unit(100, UnitType.Percentage);
+            memoSettings.Text = ViewData["Log"].ToString();
+        }).GetHtml()
+
