@@ -1,0 +1,23 @@
+@using (Html.BeginForm()) {
+    @Html.DevExpress().Button(settings => {
+        settings.Name = "BackButton";
+        settings.RenderMode = ButtonRenderMode.Link;
+        settings.RouteValues = new { Controller = "Home", Action = "Index" };
+        settings.Text = "Back to Example";
+    }).GetHtml()
+    <br />
+    <br />
+    <span>Error log:</span>
+    @Html.DevExpress().Memo(settings => {
+        settings.Name = "Memo";
+        settings.Height = new Unit(500, UnitType.Pixel);
+        settings.Width = new Unit(100, UnitType.Percentage);
+    }).Bind(ViewData["Log"]).GetHtml()
+    
+    @Html.DevExpress().Button(settings => {
+        settings.Name = "ClearButton";
+        settings.RenderMode = ButtonRenderMode.Link;
+        settings.Text = "Clear";
+        settings.UseSubmitBehavior = true;
+    }).GetHtml()
+}

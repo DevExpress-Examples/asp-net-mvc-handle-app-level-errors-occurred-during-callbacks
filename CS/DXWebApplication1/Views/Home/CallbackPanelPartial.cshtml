@@ -1,0 +1,10 @@
+@Html.DevExpress().CallbackPanel(settings => {
+    settings.Name = "CallbackPanel";
+    settings.CallbackRouteValues = new { Controller = "Home", Action = "CallbackPanelPartial" };
+    settings.SetContent(() => {
+        if (ViewData["ThrowExceptionOnCallback"] != null) {
+            Exception innerException = new Exception("NoReport");
+            throw new Exception("This Exception is thrown to demonstrate the ASPxWebControl.CallbackError Event.", innerException);
+        }
+    });
+}).GetHtml()

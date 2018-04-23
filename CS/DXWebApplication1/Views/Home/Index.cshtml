@@ -1,0 +1,7 @@
+@Html.Partial("CallbackPanelPartial")
+
+@Html.DevExpress().Button(btnSettings => {
+    btnSettings.Name = "Button";
+    btnSettings.Text = "Throw Exception on Callback";
+    btnSettings.ClientSideEvents.Click = "function(s, e) { CallbackPanel.PerformCallback({ThrowExceptionOnCallback: true}); }";
+}).GetHtml()
