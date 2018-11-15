@@ -1,3 +1,13 @@
+<!-- default file list -->
+*Files to look at*:
+
+* [FilterConfig.cs](./CS/DXWebApplication1/App_Start/FilterConfig.cs) (VB: [FilterConfig.vb](./VB/DXWebApplication1/App_Start/FilterConfig.vb))
+* [RouteConfig.cs](./CS/DXWebApplication1/App_Start/RouteConfig.cs) (VB: [RouteConfig.vb](./VB/DXWebApplication1/App_Start/RouteConfig.vb))
+* [WebApiConfig.cs](./CS/DXWebApplication1/App_Start/WebApiConfig.cs) (VB: [WebApiConfig.vb](./VB/DXWebApplication1/App_Start/WebApiConfig.vb))
+* [HomeController.cs](./CS/DXWebApplication1/Controllers/HomeController.cs) (VB: [HomeController.vb](./VB/DXWebApplication1/Controllers/HomeController.vb))
+* [Global.asax](./CS/DXWebApplication1/Global.asax) (VB: [Global.asax](./VB/DXWebApplication1/Global.asax))
+* [Global.asax.cs](./CS/DXWebApplication1/Global.asax.cs) (VB: [Global.asax](./VB/DXWebApplication1/Global.asax))
+<!-- default file list end -->
 # How to handle app level errors occurred inside ASP.NET MVC controls during callbacks
 
 
