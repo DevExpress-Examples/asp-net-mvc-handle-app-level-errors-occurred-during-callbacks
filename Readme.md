@@ -1,3 +1,13 @@
+<!-- default file list -->
+*Files to look at*:
+
+* [HomeController.cs](./CS/MvcGridView_example/Controllers/HomeController.cs) (VB: [HomeController.vb](./VB/MvcGridView_example/Controllers/HomeController.vb))
+* [Global.asax.cs](./CS/MvcGridView_example/Global.asax.cs) (VB: [Global.asax.vb](./VB/MvcGridView_example/Global.asax.vb))
+* [_CallbackPartial.cshtml](./CS/MvcGridView_example/Views/Home/_CallbackPartial.cshtml)
+* [Error.cshtml](./CS/MvcGridView_example/Views/Home/Error.cshtml)
+* **[Index.cshtml](./CS/MvcGridView_example/Views/Home/Index.cshtml)**
+* [Web.config](./CS/MvcGridView_example/Web.config) (VB: [Web.config](./VB/MvcGridView_example/Web.config))
+<!-- default file list end -->
 # How to handle app level errors occurred inside ASP.NET MVC controls during callbacks
 
 
