@@ -3,26 +3,10 @@
 [![](https://img.shields.io/badge/Open_in_DevExpress_Support_Center-FF7200?style=flat-square&logo=DevExpress&logoColor=white)](https://supportcenter.devexpress.com/ticket/details/E4588)
 [![](https://img.shields.io/badge/📖_How_to_use_DevExpress_Examples-e9f6fc?style=flat-square)](https://docs.devexpress.com/GeneralInformation/403183)
 <!-- default badges end -->
-<!-- default file list -->
-*Files to look at*:
 
-* [FilterConfig.cs](./CS/DXWebApplication1/App_Start/FilterConfig.cs) (VB: [FilterConfig.vb](./VB/DXWebApplication1/App_Start/FilterConfig.vb))
-* [RouteConfig.cs](./CS/DXWebApplication1/App_Start/RouteConfig.cs) (VB: [RouteConfig.vb](./VB/DXWebApplication1/App_Start/RouteConfig.vb))
-* [WebApiConfig.cs](./CS/DXWebApplication1/App_Start/WebApiConfig.cs) (VB: [WebApiConfig.vb](./VB/DXWebApplication1/App_Start/WebApiConfig.vb))
-* [HomeController.cs](./CS/DXWebApplication1/Controllers/HomeController.cs) (VB: [HomeController.vb](./VB/DXWebApplication1/Controllers/HomeController.vb))
-* [Global.asax](./CS/DXWebApplication1/Global.asax) (VB: [Global.asax](./VB/DXWebApplication1/Global.asax))
-* [Global.asax.cs](./CS/DXWebApplication1/Global.asax.cs) (VB: [Global.asax.vb](./VB/DXWebApplication1/Global.asax.vb))
-<!-- default file list end -->
-# How to handle app level errors occurred inside ASP.NET MVC controls during callbacks
+# ASP.NET MVC - How to handle application-level errors occurred during callbacks
 
-
-<p>This example is an MVC version of the <a href="https://www.devexpress.com/Support/Center/p/E2398">How to use the ASPxWebControl.CallbackError event to handle application-level errors occurred inside ASPxWebControls during callback processing</a> WebForms solution.<br><br></p>
-<p>It illustrates how to catch and handle
-
-* Exceptions that occur inside DevExpress ASP.NET MVC extensions during a callback using the <a href="https://documentation.devexpress.com/#AspNet/DevExpressWebASPxWebControl_CallbackErrortopic">ASPxWebControl.CallbackError</a> event;
-* The remaining unhandled exceptions using the <a href="http://msdn.microsoft.com/en-us/library/24395wz3(v=vs.100).aspx">Application_Error</a> event in the Global.asax file.<br>It also shows how to write required information to the same log/storage (for further diagnostics, etc).</p>
-<p><br>Global.asax:<br><br></p>
-
+Use the static [ASPxWebControl.CallbackError](https://docs.devexpress.com/AspNet/DevExpress.Web.ASPxWebControl.CallbackError) event to handle callback exceptions thrown by DevExpress MCV extensions server side. Delegate callback exception handling to the `Application_Error` event handler.
 
 ```cs
 protected void Application_Start() {
@@ -30,19 +14,13 @@ protected void Application_Start() {
 }
 ```
 
-
-<p> </p>
-
-
 ```vb
 Protected Sub Application_Start()
 	AddHandler ASPxWebControl.CallbackError, AddressOf Application_Error
 End Sub
 ```
 
-
-<p> </p>
-
+The `Application_Error` event handler catches all unhandled ASP.NET errors while processing a request. You can use the [GetLastError](https://learn.microsoft.com/en-us/dotnet/api/system.web.httpserverutility.getlasterror) method to get and log the details of the last exception.
 
 ```cs
 protected void Application_Error(object sender, EventArgs e) {
@@ -52,10 +30,6 @@ protected void Application_Error(object sender, EventArgs e) {
     AddToLog(exception.Message, exception.StackTrace);
 }
 ```
-
-
-<p> </p>
-
 
 ```vb
 Protected Sub Application_Error(ByVal sender As Object, ByVal e As EventArgs)
@@ -67,9 +41,7 @@ Protected Sub Application_Error(ByVal sender As Object, ByVal e As EventArgs)
 End Sub
 ```
 
-
-<p><br><br>The only difference is the format of the <a href="https://documentation.devexpress.com/#AspNet/CustomDocument6914">callbackErrorRedirectUrl</a> configuration option. It should be set according to the routing configuration:<br><br>Web.config:<br><br></p>
-
+When a callback exception occurs, you can redirect the application to another web resource. Use the [callbackErrorRedirectUrl](https://docs.devexpress.com/AspNet/6914/common-concepts/webconfig-modifications/webconfig-options/redirection-on-a-callback-error) configuration option to specify the redirection location.
 
 ```xml
 <configuration>
@@ -79,10 +51,7 @@ End Sub
 </configuration>
 ```
 
-
-<p> </p>
-<p>Note that this approach won't catch exceptions thrown in a controller action when <strong>customErrors.mode</strong> is <strong>On</strong>. To handle controller exceptions in this case, add a custom error filter into FilterConfig:</p>
-
+If the `customErrors.mode` option is set to `On`, add a custom error filter into **FilterConfig** to handle controller exceptions. 
 
 ```cs
 public class FilterConfig {
@@ -101,10 +70,38 @@ public class FilterConfig {
 
 ```
 
+```vb
+Public Class FilterConfig
+    Public Shared Sub RegisterGlobalFilters(ByVal filters As GlobalFilterCollection)
+        filters.Add(New HandleErrorAttributeEx())
+    End Sub
 
-<p>This will make action errors raise the Application_Error event.</p>
-<p><br><strong>WebForms Version:</strong><br><a href="https://www.devexpress.com/Support/Center/p/E2398">How to use the ASPxWebControl.CallbackError event to handle application-level errors occurred inside ASPxWebControls during callback processing</a></p>
+    Public Class HandleErrorAttributeEx
+        Inherits HandleErrorAttribute
 
-<br/>
+        Public Sub New()
+            MyBase.New()
+        End Sub
+        Public Overrides Sub OnException(ByVal filterContext As ExceptionContext)
+            MyBase.OnException(filterContext)
+            filterContext.ExceptionHandled = False
+        End Sub
+    End Class
+End Class
+```
 
+## Files to Review
 
+* [Global.asax.cs](./CS/DXWebApplication1/Global.asax.cs) (VB: [Global.asax.vb](./VB/DXWebApplication1/Global.asax.vb))
+* [FilterConfig.cs](./CS/DXWebApplication1/App_Start/FilterConfig.cs) (VB: [FilterConfig.vb](./VB/DXWebApplication1/App_Start/FilterConfig.vb))
+* [HomeController.cs](./CS/DXWebApplication1/Controllers/HomeController.cs) (VB: [HomeController.vb](./VB/DXWebApplication1/Controllers/HomeController.vb))
+* [Web.config](./CS/DXWebApplication1/Web.config) (VB: [Web.config](./VB/DXWebApplication1/Web.config))
+
+## Documentation 
+
+* [Callbacks](https://docs.devexpress.com/AspNet/402559/common-concepts/callbacks)
+* [Callback Exception Handling](https://docs.devexpress.com/AspNetMvc/402269/common-features/callback-based-functionality/callback-exception-handling)
+
+## More Examples 
+
+* [ASP.NET Web Forms - How to handle application-level errors occurred during callbacks](https://github.com/DevExpress-Examples/asp-net-web-forms-handle-app-level-errors-occurred-during-callbacks)
