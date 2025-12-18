@@ -154,22 +154,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\Web.config" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Web.config" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
+    <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\FilterConfig.vb" />
@@ -183,24 +176,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Views\_ViewStart.vbhtml" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Views\Home\Index.vbhtml" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Views\Shared\_Layout.vbhtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="packages.config" />
+    <None Include="Views\Home\CallbackPanelPartial.vbhtml" />
+    <None Include="Views\Home\Error.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Views\Home\CallbackPanelPartial.vbhtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Views\Home\Error.vbhtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">17.0</VisualStudioVersion>
