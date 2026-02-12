@@ -107,7 +107,7 @@ End Class
 
 * [ASP.NET Web Forms - How to handle application-level errors occurred during callbacks](https://github.com/DevExpress-Examples/asp-net-web-forms-handle-app-level-errors-occurred-during-callbacks)
 <!-- feedback -->
-## Does this example address your development requirements/objectives?
+## Does This Example Address Your Development Requirements/Objectives?
 
 [<img src="https://www.devexpress.com/support/examples/i/yes-button.svg"/>](https://www.devexpress.com/support/examples/survey.xml?utm_source=github&utm_campaign=asp-net-mvc-handle-app-level-errors-occurred-during-callbacks&~~~was_helpful=yes) [<img src="https://www.devexpress.com/support/examples/i/no-button.svg"/>](https://www.devexpress.com/support/examples/survey.xml?utm_source=github&utm_campaign=asp-net-mvc-handle-app-level-errors-occurred-during-callbacks&~~~was_helpful=no)
 
